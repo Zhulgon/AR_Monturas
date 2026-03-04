@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+
+# Blender
+*.blend1
+*.blend2
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Exports (opcional: si NO quieres subir GLB al repo)
+# exports/glb/
+
+# Unity (si luego metes proyecto Unity completo)
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
