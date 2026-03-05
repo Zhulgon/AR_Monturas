@@ -12,8 +12,7 @@ __pycache__/
 Thumbs.db
 
 # Exports (opcional: si NO quieres subir GLB al repo)
-exports/
-# exports/glb/
+
 
 # Unity (si luego metes proyecto Unity completo)
 Library/
