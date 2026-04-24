@@ -24,8 +24,3 @@ Proyecto Unity para catalogo de monturas en AR con Vuforia.
 - Corrige la ruta de origen de FBX en:
   - `Assets/Editor/ARCatalogAutoSetup.cs`
   - Constante: `SourceFbxFolderAbsolute`
-
-## Notas
-
-- No se suben carpetas generadas (`Library`, `Temp`, `Logs`, etc.).
-- Si vas a publicar el repo, revisa credenciales/licencias embebidas (ejemplo: Vuforia key) antes de hacerlo publico.
