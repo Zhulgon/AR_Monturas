@@ -14,6 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ARScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/FaceTracking.unity
+    guid: 31949f617514d4c4e919e07809d8327a
   m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 9fc4513c473fd8540a46e97b1cd17005, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 82fde7d42f2b5fd4facc7f1da99bd109, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 80fb4f33378f00041b979c82d86bb522, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: c7fb30339f2b3344c8cd150e020c1ba5, type: 2}
   m_UseUCBPForAssetBundles: 0

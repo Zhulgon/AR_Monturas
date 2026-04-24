@@ -17,4 +17,9 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("SplashScene");
     }
+
+    public void IrAFaceT()
+    {
+        SceneManager.LoadScene("FaceTracking");
+    }
 }
