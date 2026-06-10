@@ -20,6 +20,12 @@ public class SceneLoader : MonoBehaviour
 
     public void IrAFaceT()
     {
+        ARScene arScene = FindFirstObjectByType<ARScene>();
+        if (arScene != null)
+        {
+            arScene.SaveCurrentSelection();
+        }
+
         SceneManager.LoadScene("FaceTracking");
     }
 }

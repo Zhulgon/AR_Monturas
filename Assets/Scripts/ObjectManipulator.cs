@@ -1,13 +1,17 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ObjectManipulator : MonoBehaviour
 {
     [Header("References")]
     public GameObject ARObject;
     [SerializeField] private Camera aRCamera;
+    [SerializeField] private ARScene arScene;
 
     [Header("Config")]
     [SerializeField] private string tagARObjects = "ARObject";
+    [SerializeField] private bool useActiveModelFromScene = true;
+    [SerializeField] private bool requireRaycastSelection = false;
     [SerializeField] private float speedMovement = 4f;
     [SerializeField] private float speedRotation = 5f;
     [SerializeField] private float scaleStep = 0.08f;
@@ -21,6 +25,7 @@ public class ObjectManipulator : MonoBehaviour
     private Vector2 initialTouchPos;
     private float previousPinchDistance;
     private Vector2 previousPinchVector;
+    private bool pinchInitialized;
 
     private void Awake()
     {
@@ -28,30 +33,59 @@ public class ObjectManipulator : MonoBehaviour
         {
             aRCamera = Camera.main;
         }
+
+        if (arScene == null)
+        {
+            arScene = FindFirstObjectByType<ARScene>();
+        }
     }
 
     private void Update()
     {
+        if (useActiveModelFromScene && arScene != null)
+        {
+            ARObject = arScene.CurrentModel;
+        }
+
         if (Input.touchCount == 0)
         {
             isARObjectSelected = false;
+            pinchInitialized = false;
+            return;
+        }
+
+        if (ARObject == null)
+        {
             return;
         }
 
         Touch touchOne = Input.GetTouch(0);
+        if (IsTouchOverUI(touchOne))
+        {
+            return;
+        }
 
         if (Input.touchCount == 1)
         {
             if (touchOne.phase == TouchPhase.Began)
             {
                 initialTouchPos = touchOne.position;
+            }
+
+            if (requireRaycastSelection && touchOne.phase == TouchPhase.Began)
+            {
                 isARObjectSelected = CheckTouchOnARObject(initialTouchPos);
+            }
+            else if (!requireRaycastSelection)
+            {
+                isARObjectSelected = true;
             }
 
             if (touchOne.phase == TouchPhase.Moved && isARObjectSelected && ARObject != null)
             {
                 Vector2 diffPos = (touchOne.position - initialTouchPos) * movementScreenFactor;
-                ARObject.transform.position += new Vector3(diffPos.x * speedMovement, diffPos.y * speedMovement, 0f);
+                float y = ARObject.transform.rotation.eulerAngles.y - (diffPos.x * speedMovement * 100f);
+                ARObject.transform.rotation = Quaternion.Euler(0f, y, 0f);
                 initialTouchPos = touchOne.position;
             }
 
@@ -59,9 +93,18 @@ public class ObjectManipulator : MonoBehaviour
         }
 
         Touch touchTwo = Input.GetTouch(1);
-        if (!isARObjectSelected && touchOne.phase == TouchPhase.Began)
+        if (IsTouchOverUI(touchTwo))
+        {
+            return;
+        }
+
+        if (requireRaycastSelection && !isARObjectSelected && touchOne.phase == TouchPhase.Began)
         {
             isARObjectSelected = CheckTouchOnARObject(touchOne.position);
+        }
+        else if (!requireRaycastSelection)
+        {
+            isARObjectSelected = true;
         }
 
         if (!isARObjectSelected || ARObject == null)
@@ -69,10 +112,11 @@ public class ObjectManipulator : MonoBehaviour
             return;
         }
 
-        if (touchOne.phase == TouchPhase.Began || touchTwo.phase == TouchPhase.Began)
+        if (!pinchInitialized || touchOne.phase == TouchPhase.Began || touchTwo.phase == TouchPhase.Began)
         {
             previousPinchVector = touchTwo.position - touchOne.position;
             previousPinchDistance = Vector2.Distance(touchTwo.position, touchOne.position);
+            pinchInitialized = true;
             return;
         }
 
@@ -103,6 +147,16 @@ public class ObjectManipulator : MonoBehaviour
             previousPinchDistance = currentPinchDistance;
             previousPinchVector = currentPinchVector;
         }
+    }
+
+    private static bool IsTouchOverUI(Touch touch)
+    {
+        if (EventSystem.current == null)
+        {
+            return false;
+        }
+
+        return EventSystem.current.IsPointerOverGameObject(touch.fingerId);
     }
 
     private bool CheckTouchOnARObject(Vector2 touchPosition)

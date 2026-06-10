@@ -761,7 +761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5514670539666559517, guid: a3fde3f01c671ac40b5be6950ffb0f77, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5514670539666559517, guid: a3fde3f01c671ac40b5be6950ffb0f77, type: 3}
       propertyPath: m_TagString
@@ -944,6 +944,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startModel: {fileID: 235187975}
+  frameMaterials: []
+  lensMaterials: []
 --- !u!114 &332195868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1151,7 +1153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 110}
+  m_AnchoredPosition: {x: 0, y: 291}
   m_SizeDelta: {x: 900, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &445541010
@@ -1275,13 +1277,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ARGlassesCatalog, Assembly-CSharp
+      - m_Target: {fileID: 332195867}
+        m_TargetAssemblyTypeName: ARScene, Assembly-CSharp
         m_MethodName: SetSizeL
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1448,13 +1450,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ARGlassesCatalog, Assembly-CSharp
+      - m_Target: {fileID: 332195867}
+        m_TargetAssemblyTypeName: ARScene, Assembly-CSharp
         m_MethodName: SetSizeX
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2083,13 +2085,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ARGlassesCatalog, Assembly-CSharp
+      - m_Target: {fileID: 332195867}
+        m_TargetAssemblyTypeName: ARScene, Assembly-CSharp
         m_MethodName: SetSizeS
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2216,13 +2218,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ARGlassesCatalog, Assembly-CSharp
+      - m_Target: {fileID: 332195867}
+        m_TargetAssemblyTypeName: ARScene, Assembly-CSharp
         m_MethodName: SetSizeXL
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2432,7 +2434,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ARObject: {fileID: 0}
   aRCamera: {fileID: 768861650}
+  arScene: {fileID: 0}
   tagARObjects: ARObject
+  useActiveModelFromScene: 1
+  requireRaycastSelection: 0
   speedMovement: 4
   speedRotation: 5
   scaleStep: 0.08
@@ -2840,13 +2845,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ARGlassesCatalog, Assembly-CSharp
+      - m_Target: {fileID: 332195867}
+        m_TargetAssemblyTypeName: ARScene, Assembly-CSharp
         m_MethodName: SetSizeM
-        m_Mode: 0
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
